@@ -122,7 +122,6 @@ def main(model_path: str):
         if results.multi_hand_landmarks:
             # ML classification — one call replaces all the rule logic
             detected, probs = classify_mudra_with_probs(results.multi_hand_landmarks[0].landmark)
-            print(probs)
 
             mp_drawing.draw_landmarks(
                 image,
@@ -153,6 +152,11 @@ def main(model_path: str):
             if is_correct:
                 correct_count += 1
             last_state = is_correct
+            
+            # Display accuracy in terminal
+            accuracy = (correct_count / total_attempts * 100) if total_attempts > 0 else 0
+            result = "✓ CORRECT" if is_correct else "✗ WRONG"
+            print(f"{result} | Score: {correct_count}/{total_attempts} | Accuracy: {accuracy:.1f}%", flush=True)
 
      
 

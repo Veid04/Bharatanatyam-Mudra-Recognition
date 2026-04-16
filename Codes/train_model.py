@@ -16,6 +16,23 @@ Usage:
                           --output mudra_model.pt
 """
 
+#Accuracy:
+#Test accuracy = 100%
+#Validation accuracy = 99.72
+#Tain accuracy = 99.49%
+
+#We have trained it for 150 epoches.
+
+#MLP Classifier:
+#We have used a 4 layer with Batchnom and Dropout.
+#These are used to improve the performance of the MLP model and prevent overfitting.
+
+#Batchnom normalises the values between layers so training is stable and faster.
+#Dropout(40%) is used to prevent overfitting. 
+#ReLU is used as activation function and privents overfitting.
+#  
+
+
 import argparse
 import os
 import numpy as np
@@ -78,11 +95,11 @@ def load_data(npz_path: str):
 def get_dataloaders(X: np.ndarray, y: np.ndarray,
                     val_split: float = 0.15, test_split: float = 0.10,
                     batch_size: int = 64):
-    """Split into train/val/test and return DataLoaders."""
-    n = len(X)
-    n_test = int(n * test_split)
+    """Split into train/val/test and return DataLoaders."""   #(train|Val|Test) = (75|15|10) % by default
+    n = len(X)                          
+    n_test = int(n * test_split) 
     n_val  = int(n * val_split)
-    n_train = n - n_val - n_test
+    n_train = n - n_val - n_test    
 
     dataset = TensorDataset(torch.from_numpy(X), torch.from_numpy(y))
     train_ds, val_ds, test_ds = random_split(
