@@ -9,7 +9,7 @@
 - Supports 6 classical mudras: Pathaka, Tripathaka, Mushti, Ardhachandran, Hamsasyam, Alapadmam
 - Live confidence-based gesture stabilisation
 - Python-based scoring system
-- Optional MSPM0 microcontroller integration via serial
+
 
 ## Tech Stack
 `Python` `MediaPipe` `PyTorch` `OpenCV` `NumPy`
